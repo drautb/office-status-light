@@ -1,10 +1,10 @@
 import json
 
 from flask import Flask, request, jsonify
-# from unicornhatmini import UnicornHATMini
+from unicornhatmini import UnicornHATMini
 
 app = Flask(__name__)
-# panel = UnicornHATMini()
+panel = UnicornHATMini()
 
 current_color = {
     "r": 0,
@@ -22,7 +22,7 @@ def change_color():
     current_color["r"] = request_data["r"]
     current_color["g"] = request_data["g"]
     current_color["b"] = request_data["b"]
-    # panel.set_all(current_color["r"], current_color["g"], current_color["b"])
+    panel.set_all(current_color["r"], current_color["g"], current_color["b"])
     return jsonify(current_color)
 
 @app.route("/color", methods=["GET"])
