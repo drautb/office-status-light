@@ -12,6 +12,18 @@ current_color = {
     "b": 0
 }
 
+current_brightness = 1.0
+
+def _update_color_display():
+    panel.set_all(current_color["r"], current_color["g"], current_color["b"])
+    panel.show()
+
+def _update_brightness_display():
+    panel.set_brightness(current_brightness)
+
+panel.set_brightness(current_brightness)
+_update_color_display()
+
 @app.route("/")
 def healthy():
     return "server is running\n"
@@ -22,12 +34,22 @@ def change_color():
     current_color["r"] = request_data["r"]
     current_color["g"] = request_data["g"]
     current_color["b"] = request_data["b"]
-    panel.set_all(current_color["r"], current_color["g"], current_color["b"])
+    _update_color_display()
     return jsonify(current_color)
+
+@app.route("/brightness", methods=["PUT"])
+def change_brightness():
+    current_brightness = float(request.data)
+    _update_brightness_display()
+    return current_brightness
 
 @app.route("/color", methods=["GET"])
 def get_color():
     return jsonify(current_color)
 
-app.run(debug=False)
+@app.route("/brightness", methods=["GET"])
+def get_brightness():
+    return current_color
+
+app.run(host="0.0.0.0", debug=False)
 
