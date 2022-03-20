@@ -13,10 +13,9 @@ b=0
 
 if [ "$STATUS" = "available" ]; then  # Green
   g=255
-elif [ "$STATUS" = "focus" ]; then    # Blue
-  # I'd like to use yellow for this, but mixed colors seem to always be dominated (on the board) by either R, G, or B, so 
-  # it's hard to tell the difference between yellow and green/red, depending on the ratio.
-  b=255
+elif [ "$STATUS" = "focus" ]; then    # Yellow
+  r=255
+  g=48
 elif [ "$STATUS" = "meeting" ]; then  # Red
   r=255
 else
