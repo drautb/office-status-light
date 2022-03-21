@@ -22,5 +22,12 @@ else
   printf "Unreocgnized staus: '%s', turning off light...\n", "$STATUS"
 fi
 
-curl -X PUT -H "Content-Type: application/json" "$HOST:5000/color" -d "{\"r\":$r,\"g\":$g,\"b\":$b}"
+color="$(curl -s -X PUT -H "Content-Type: application/json" "$HOST:5000/color" -d "{\"r\":$r,\"g\":$g,\"b\":$b}")"
+
+r="$(echo "$color" | jq '.r')"
+g="$(echo "$color" | jq '.g')"
+b="$(echo "$color" | jq '.b')"
+
+printf "\x1b[38;2;%d;%d;%dm■■■■■\x1b[0m\n" "$r" "$g" "$b"
+
 
