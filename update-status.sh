@@ -19,7 +19,7 @@ elif [ "$STATUS" = "focus" ]; then    # Yellow
 elif [ "$STATUS" = "meeting" ]; then  # Red
   r=255
 else
-  printf "Unreocgnized staus: '%s', turning off light...\n", "$STATUS"
+  printf "Unrecognized staus: '%s', turning off light...\n" "$STATUS"
 fi
 
 color="$(curl -s -X PUT -H "Content-Type: application/json" "$HOST:5000/color" -d "{\"r\":$r,\"g\":$g,\"b\":$b}")"
