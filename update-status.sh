@@ -28,6 +28,6 @@ r="$(echo "$color" | jq '.r')"
 g="$(echo "$color" | jq '.g')"
 b="$(echo "$color" | jq '.b')"
 
-printf "\x1b[38;2;%d;%d;%dm■■■■■\x1b[0m\n" "$r" "$g" "$b"
+printf "\x1b[38;2;%d;%d;%dm████\x1b[0m\n" "$r" "$g" "$b"
 
 
