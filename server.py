@@ -41,7 +41,7 @@ def change_color():
 def change_brightness():
     current_brightness = float(request.data)
     _update_brightness_display()
-    return current_brightness
+    return str(current_brightness)
 
 @app.route("/color", methods=["GET"])
 def get_color():
@@ -49,7 +49,7 @@ def get_color():
 
 @app.route("/brightness", methods=["GET"])
 def get_brightness():
-    return jsonify(current_brightness)
+    return str(current_brightness)
 
 app.run(host="0.0.0.0", debug=False)
 
