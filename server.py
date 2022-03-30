@@ -49,7 +49,7 @@ def get_color():
 
 @app.route("/brightness", methods=["GET"])
 def get_brightness():
-    return current_brightness
+    return jsonify(current_brightness)
 
 app.run(host="0.0.0.0", debug=False)
 
